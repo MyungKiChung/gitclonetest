@@ -1,0 +1,156 @@
+root@deepxit-System-Product-Name:/home/deepxit/다운로드# sudo dpkg -i PClientdebianSetup.deb
+(데이터베이스 읽는중 ...현재 183637개의 파일과 디렉터리가 설치되어 있습니다.)
+Preparing to unpack PClientdebianSetup.deb ...
+prerm upgrade
+Ubuntu 20.04
+Unpacking pclient-setup (5.16.0.81) over (5.16.0.80) ...
+postrm upgrade
+pclient-setup (5.16.0.81) 설정하는 중입니다 ...
+GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+--------------------done ----------------------
+Processing triggers for rsyslog (8.2001.0-1ubuntu1.3) ...
+Processing triggers for gnome-menus (3.36.0-1ubuntu1) ...
+Processing triggers for desktop-file-utils (0.24-1ubuntu3) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.15) ...
+root@deepxit-System-Product-Name:/home/deepxit/다운로드# 
+root@deepxit-System-Product-Name:/home/deepxit/다운로드# 
+root@deepxit-System-Product-Name:/home/deepxit/다운로드# 
+root@deepxit-System-Product-Name:/home/deepxit/다운로드# cat install_deepx_pclient.sh 
+#!/bin/bash
+
+if [ "$#" -lt 2 ]; then
+    echo "please give me employee identification number and password"
+    exit 1
+fi
+
+if sudo -v; then
+    echo "sudo permission granted"
+else
+    echo "sudo permission is required to install pclient."
+    exit 1
+fi
+
+if [ -e "pclient_setup.deb" ]; then
+    echo "File $filename exists in the current directory. Skip Download"
+else
+    echo "Download deb package"
+    wget http://10.10.10.181/pclient_setup.deb
+fi
+
+echo "Install downloaded Package"
+sudo dpkg -i pclient_setup.deb
+
+if command -v authctl > /dev/null 2>&1; then
+    echo "authctl installed Successfully."
+else
+    echo "Failed to install authctl"
+    exit 1
+fi
+
+authctl login $1 $2
+sudo systemctl restart authserviced
+authctl stats
+root@deepxit-System-Product-Name:/home/deepxit/다운로드# ./install_deepx_pclient.sh 
+please give me employee identification number and password
+root@deepxit-System-Product-Name:/home/deepxit/다운로드# ./install_deepx_pclient.sh A00071 audtls5733!
+sudo permission granted
+File  exists in the current directory. Skip Download
+Install downloaded Package
+dpkg: 경고: downgrading pclient-setup from 5.16.0.81 to 5.16.0.80
+(데이터베이스 읽는중 ...현재 183637개의 파일과 디렉터리가 설치되어 있습니다.)
+Preparing to unpack pclient_setup.deb ...
+prerm upgrade
+Ubuntu 20.04
+Unpacking pclient-setup (5.16.0.80) over (5.16.0.81) ...
+postrm upgrade
+pclient-setup (5.16.0.80) 설정하는 중입니다 ...
+GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+--------------------done ----------------------
+Processing triggers for rsyslog (8.2001.0-1ubuntu1.3) ...
+Processing triggers for gnome-menus (3.36.0-1ubuntu1) ...
+Processing triggers for desktop-file-utils (0.24-1ubuntu3) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.15) ...
+authctl installed Successfully.
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+B
+
